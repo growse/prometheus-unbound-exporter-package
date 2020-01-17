@@ -25,12 +25,12 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: dist
-          path: gopath/src/github.com/prometheus/node_exporter/dist
+          path: gopath/src/github.com/kumina/unbound_exporter/dist
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
         with:
           name: changelog
-          path: gopath/src/github.com/prometheus/node_exporter/CHANGELOG.md
+          path: gopath/src/github.com/kumina/unbound_exporter/CHANGELOG.md
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
@@ -43,12 +43,12 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: dist
-          path: gopath/src/github.com/prometheus/node_exporter/dist
+          path: gopath/src/github.com/kumina/unbound_exporter/dist
       - name: Download changelog artifact
         uses: actions/download-artifact@v1
         with:
           name: changelog
-          path: gopath/src/github.com/prometheus/node_exporter
+          path: gopath/src/github.com/kumina/unbound_exporter
 
       - name: Set up Ruby 2.6
         uses: actions/setup-ruby@v1
@@ -64,7 +64,7 @@ jobs:
           token: ${{secrets.github_token}}
       - name: Make deb package
         run: |
-          touch gopath/src/github.com/prometheus/node_exporter/dist/*
+          touch gopath/src/github.com/kumina/unbound_exporter/dist/*
           make package
       - name: Upload to S3 Apt repo
         env:
