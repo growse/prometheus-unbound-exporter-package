@@ -21,11 +21,6 @@ CGO_ENABLED := 0
 GOARM := 7
 VPREFIX := github.com/prometheus/common/version
 
-# Can only expand these after the git checkout
-GIT_REVISION = $(shell cd $(APPHOME) && git rev-parse --short HEAD)
-GIT_BRANCH = $(shell cd $(APPHOME) && git rev-parse --abbrev-ref HEAD)
-IMAGE_TAG = $(shell cd $(APPHOME) && git describe --exact-match 2> /dev/null)
-
 GO_LDFLAGS = -s -w --extldflags '-static'
 DYN_GO_FLAGS = -ldflags "$(GO_LDFLAGS)" -tags netgo
 
