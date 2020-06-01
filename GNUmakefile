@@ -13,12 +13,10 @@ GOPATH := $(abspath gopath)
 APPHOME := $(GOPATH)/src/$(APP_REMOTE)
 
 # Let's map from go architectures to deb architectures, because they're not the same!
-DEB_arm_ARCH := armhf
 DEB_amd64_ARCH := amd64
 
 # Version info for binaries
 CGO_ENABLED := 0
-GOARM := 7
 VPREFIX := github.com/prometheus/common/version
 
 GO_LDFLAGS = -s -w --extldflags '-static'
@@ -43,10 +41,12 @@ $(APPHOME): $(GOPATH)
 	cd $(APPHOME) && git checkout $(VERSION)
 
 $(APPHOME)/dist/$(DEBNAME)_linux_%: $(APPHOME)
-	echo $(GIT_REVISION) && \
-	echo $(IMAGE_TAG) && \
+	$(eval GIT_REVISION := $(shell cd $(APPHOME) && git rev-parse --short HEAD))
+	$(eval GIT_BRANCH := $(shell cd $(APPHOME) && git rev-parse --abbrev-ref HEAD))
+	$(eval IMAGE_TAG := $(shell cd $(APPHOME) && git describe --exact-match))
 	cd $(APPHOME) && \
 	GOOS=linux GOARCH=$* go build $(DYN_GO_FLAGS) -o dist/$(DEBNAME)_linux_$* $(GO_BUILD_SOURCE)
+	upx $@
 
 $(DEBNAME)_$(DEBVERSION)_%.deb: $(APPHOME)/dist/$(DEBNAME)_linux_%
 	chmod +x $<
