@@ -1,6 +1,6 @@
 DEBNAME := prometheus-unbound-exporter
 APP_REMOTE := github.com/kumina/unbound_exporter
-VERSION := v0.2
+VERSION := v0.3
 APPDESCRIPTION := Exporter for unbound metrics
 APPURL := https://github.com/kumina/unbound_exporter
 ARCH := amd64
