@@ -30,7 +30,7 @@ GEM
       pleaserun (~> 0.0.29)
       rexml
       stud
-    git (1.10.2)
+    git (1.11.0)
       rchardet (~> 1.8)
     insist (1.0.0)
     jmespath (1.4.0)
