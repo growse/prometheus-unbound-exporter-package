@@ -2,7 +2,7 @@
 Description=Prometheus Unbound Exporter
 
 [Service]
-User=prometheus
+User=unbound
 EnvironmentFile=/etc/default/prometheus-unbound-exporter
 ExecStart=/usr/sbin/unbound_exporter $OPTIONS
 
