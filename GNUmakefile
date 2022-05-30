@@ -41,9 +41,6 @@ $(APPHOME): $(GOPATH)
 	cd $(APPHOME) && git checkout $(VERSION)
 
 $(APPHOME)/dist/$(DEBNAME)_linux_%: $(APPHOME)
-	$(eval GIT_REVISION := $(shell cd $(APPHOME) && git rev-parse --short HEAD))
-	$(eval GIT_BRANCH := $(shell cd $(APPHOME) && git rev-parse --abbrev-ref HEAD))
-	$(eval IMAGE_TAG := $(shell cd $(APPHOME) && git describe --exact-match))
 	cd $(APPHOME) && \
 	GOOS=linux GOARCH=$* go build $(DYN_GO_FLAGS) -o dist/$(DEBNAME)_linux_$* $(GO_BUILD_SOURCE)
 	upx $@
