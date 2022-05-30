@@ -65,6 +65,9 @@ $(DEBNAME)_$(DEBVERSION)_%.deb: $(APPHOME)/dist/$(DEBNAME)_linux_%
 	-a $(DEB_$*_ARCH) \
 	-v $(DEBVERSION) \
 	--deb-systemd prometheus-unbound-exporter.service \
+	--deb-systemd-enable \
+	--deb-systemd-restart-after-upgrade \
+	--deb-systemd-auto-start \
 	prometheus-unbound-exporter.defaults=/etc/default/prometheus-unbound-exporter \
 	$<=/usr/sbin/unbound_exporter
 
