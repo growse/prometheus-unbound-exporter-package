@@ -1,8 +1,8 @@
 DEBNAME := prometheus-unbound-exporter
-APP_REMOTE := github.com/kumina/unbound_exporter
-VERSION := v0.3
+APP_REMOTE := github.com/letsencrypt/unbound_exporter
+VERSION := v0.4.1
 APPDESCRIPTION := Exporter for unbound metrics
-APPURL := https://github.com/kumina/unbound_exporter
+APPURL := https://github.com/letsencrypt/unbound_exporter
 ARCH := amd64
 GO_BUILD_SOURCE := .
 
@@ -50,7 +50,23 @@ $(APPHOME)/dist/$(DEBNAME)_linux_%: $(APPHOME)
 
 $(DEBNAME)_$(DEBVERSION)_%.deb: $(APPHOME)/dist/$(DEBNAME)_linux_%
 	chmod +x $<
-	bundle exec fpm -s dir -t deb --license Apache --deb-priority optional --maintainer github@growse.com --vendor https://github.com/kumina/ -n $(DEBNAME) --description "$(APPDESCRIPTION)" --url $(APPURL) --prefix / -a $(DEB_$*_ARCH) -v $(DEBVERSION) --deb-systemd prometheus-unbound-exporter.service --config-files /etc/default/prometheus-unbound-exporter prometheus-unbound-exporter.defaults=/etc/default/prometheus-unbound-exporter $<=/usr/sbin/unbound_exporter
+	bundle exec fpm \
+	-s dir \
+	-t deb \
+	--license "Apache 2.0" \
+	--deb-priority optional \
+	--maintainer github@growse.com \
+	--vendor ISRG \
+	-n $(DEBNAME) \
+	--description \
+	"$(APPDESCRIPTION)" \
+	--url $(APPURL) \
+	--prefix / \
+	-a $(DEB_$*_ARCH) \
+	-v $(DEBVERSION) \
+	--deb-systemd prometheus-unbound-exporter.service \
+	prometheus-unbound-exporter.defaults=/etc/default/prometheus-unbound-exporter \
+	$<=/usr/sbin/unbound_exporter
 
 .PHONY: clean
 clean:
