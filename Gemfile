@@ -8,4 +8,4 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem "fpm", "~> 1.14"
 
-gem "deb-s3", "~> 0.10.0"
+gem "deb-s3", "~> 0.11.0"
