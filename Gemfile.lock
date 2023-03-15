@@ -12,7 +12,7 @@ GEM
     aws-sdk-kms (1.59.0)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.117.1)
+    aws-sdk-s3 (1.117.2)
       aws-sdk-core (~> 3, >= 3.165.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.4)
@@ -21,7 +21,7 @@ GEM
     backports (3.24.0)
     cabin (0.9.0)
     clamp (1.0.1)
-    deb-s3 (0.11.5)
+    deb-s3 (0.11.6)
       aws-sdk-s3 (~> 1)
       thor (~> 1)
     dotenv (2.8.1)
@@ -34,7 +34,7 @@ GEM
       rexml
       stud
     insist (1.0.0)
-    jmespath (1.6.1)
+    jmespath (1.6.2)
     mustache (0.99.8)
     pleaserun (0.0.32)
       cabin (> 0)
