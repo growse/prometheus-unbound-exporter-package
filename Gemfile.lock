@@ -21,7 +21,7 @@ GEM
     backports (3.24.0)
     cabin (0.9.0)
     clamp (1.0.1)
-    deb-s3 (0.11.6)
+    deb-s3 (0.11.7)
       aws-sdk-s3 (~> 1)
       thor (~> 1)
     dotenv (2.8.1)
