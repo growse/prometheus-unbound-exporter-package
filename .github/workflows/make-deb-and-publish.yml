@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install build dependencies
         run: sudo apt-get update && sudo apt-get install -y ${APT_DEPENDENCIES}
         if: ${{ env.APT_DEPENDENCIES != '' }}
@@ -42,7 +42,7 @@ jobs:
     needs: build
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Download deb artifact
         uses: actions/download-artifact@v3
         with:
