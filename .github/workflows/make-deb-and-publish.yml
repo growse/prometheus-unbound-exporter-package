@@ -44,7 +44,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Download deb artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: deb
       - name: Upload to Apt repo
