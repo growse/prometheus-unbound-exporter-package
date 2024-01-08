@@ -1,7 +1,7 @@
 DEBNAME := prometheus-unbound-exporter
 APP_REMOTE := github.com/letsencrypt/unbound_exporter
 # renovate: datasource=github-releases depName=letsencrypt/unbound_exporter
-VERSION := v0.4.4
+EXPORTER_VERSION := v0.4.4
 APPDESCRIPTION := Exporter for unbound metrics
 APPURL := https://github.com/letsencrypt/unbound_exporter
 ARCH := amd64
@@ -9,7 +9,7 @@ GO_BUILD_SOURCE := .
 
 # Setup
 BUILD_NUMBER ?= 0
-DEBVERSION := $(VERSION:v%=%)-$(BUILD_NUMBER)
+DEBVERSION := $(EXPORTER_VERSION:v%=%)-$(BUILD_NUMBER)
 GOPATH := $(abspath gopath)
 APPHOME := $(GOPATH)/src/$(APP_REMOTE)
 
@@ -39,7 +39,7 @@ $(GOPATH):
 
 $(APPHOME): $(GOPATH)
 	git clone https://$(APP_REMOTE) $(APPHOME)
-	cd $(APPHOME) && git checkout $(VERSION)
+	cd $(APPHOME) && git checkout $(EXPORTER_VERSION)
 
 $(APPHOME)/dist/$(DEBNAME)_linux_%: $(APPHOME)
 	cd $(APPHOME) && \
