@@ -1,7 +1,7 @@
 DEBNAME := prometheus-unbound-exporter
 APP_REMOTE := github.com/letsencrypt/unbound_exporter
 # renovate: datasource=github-releases depName=letsencrypt/unbound_exporter
-VERSION := v0.4.1
+VERSION := v0.4.4
 APPDESCRIPTION := Exporter for unbound metrics
 APPURL := https://github.com/letsencrypt/unbound_exporter
 ARCH := amd64
